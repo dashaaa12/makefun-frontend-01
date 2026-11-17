@@ -1,0 +1,478 @@
+/* style.css — the one stylesheet for the whole frontend.
+   Dark grove-and-ember theme, system fonts, strong contrast, and a layout
+   that collapses cleanly to phone width. */
+
+:root {
+  --bg: #0c1210;
+  --panel: #16211c;
+  --panel-2: #1c2a23;
+  --ink: #f2f5ef;
+  --muted: #a9bcae;
+  --line: #2c4036;
+  --accent: #ffb454;
+  --accent-ink: #201304;
+  --teal: #4fe3c1;
+  --danger: #ff8a7a;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    ui-sans-system,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--teal);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem clamp(1rem, 4vw, 2.5rem);
+  background: rgba(12, 18, 16, 0.94);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  color: var(--ink);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+.brand:hover {
+  text-decoration: none;
+}
+.brand-mark {
+  color: var(--accent);
+}
+.brand-sub {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.site-nav > a {
+  font-weight: 700;
+}
+
+.profile-jump {
+  display: flex;
+  gap: 0.4rem;
+}
+.profile-jump input {
+  width: 11rem;
+  padding: 0.42rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.92rem;
+}
+.profile-jump input::placeholder {
+  color: var(--muted);
+}
+.profile-jump button,
+.more-row button {
+  padding: 0.42rem 0.8rem;
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.profile-jump button:hover,
+.more-row button:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Layout */
+
+.view {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.4rem clamp(1rem, 4vw, 2rem) 3rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1rem clamp(1rem, 4vw, 2.5rem) 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+  line-height: 1.15;
+  margin: 0.4rem 0 0.6rem;
+}
+h2 {
+  font-size: 1.25rem;
+  margin: 1.8rem 0 0.6rem;
+}
+
+.lede {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 46rem;
+}
+
+.status-line {
+  color: var(--muted);
+  padding: 2rem 0;
+  text-align: center;
+}
+.status-line.error {
+  color: var(--danger);
+}
+
+.crumbs {
+  margin: 0 0 0.4rem;
+}
+
+/* Chips and cards */
+
+.chip {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.chip-open {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+.chip-closed {
+  border-color: var(--line);
+  color: var(--muted);
+}
+.chip-fee {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.card-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.card-title {
+  margin: 0;
+  font-size: 1.12rem;
+  line-height: 1.3;
+}
+.card-title a {
+  color: var(--ink);
+}
+.card-summary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-stats {
+  display: flex;
+  gap: 1.2rem;
+  margin: 0.2rem 0 0;
+}
+.card-stats dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.card-stats dd {
+  margin: 0;
+  font-weight: 800;
+}
+.card-links {
+  margin: auto 0 0;
+  font-size: 0.92rem;
+}
+
+.more-row {
+  text-align: center;
+  margin: 1.4rem 0 0;
+}
+.more-row button {
+  padding: 0.6rem 1.4rem;
+}
+
+/* Stat grids and tables */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+}
+.stat-grid > div {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+}
+.stat-grid dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.stat-grid dd {
+  margin: 0.15rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.data-table th,
+.data-table td {
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.data-table thead th {
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.lb-table .rank {
+  font-weight: 800;
+  color: var(--accent);
+}
+.entry-title {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  max-width: 34rem;
+}
+
+/* Bounty page and prose */
+
+.sponsor-line {
+  color: var(--muted);
+  margin: 0;
+}
+.cta-row {
+  margin: 1rem 0 0;
+}
+.cta {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 800;
+  padding: 0.6rem 1.1rem;
+  border-radius: 10px;
+}
+.cta:hover {
+  text-decoration: none;
+  filter: brightness(1.07);
+}
+
+.prose {
+  max-width: 52rem;
+  color: #dbe4da;
+}
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--ink);
+}
+.prose code {
+  background: var(--panel-2);
+  padding: 0.08rem 0.35rem;
+  border-radius: 6px;
+  font-size: 0.88em;
+}
+.prose pre {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  overflow-x: auto;
+}
+.prose pre code {
+  background: none;
+  padding: 0;
+}
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 1.4rem 0;
+}
+
+/* Profile */
+
+.profile-head {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.avatar-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  flex: none;
+}
+.avatar,
+.avatar-fallback {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+}
+.avatar {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  border: 2px solid var(--line);
+  background: var(--panel);
+}
+.avatar-fallback {
+  display: grid;
+  place-items: center;
+  background: var(--panel-2);
+  border: 2px solid var(--line);
+  color: var(--accent);
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+.handle-line {
+  color: var(--muted);
+  margin: 0.1rem 0;
+}
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.4rem 0;
+}
+.bio {
+  max-width: 44rem;
+  margin: 0.4rem 0 0;
+}
+
+.solutions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.solution {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.solution-title {
+  font-weight: 700;
+}
+.solution-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 560px) {
+  .profile-jump input {
+    width: 8.5rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card-stats {
+    gap: 0.9rem;
+  }
+}

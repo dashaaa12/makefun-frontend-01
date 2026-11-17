@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>make.fun — bounties, leaderboards, hunters</title>
+    <meta
+      name="description"
+      content="A fast, tiny frontend for make.fun: live coding bounties, their leaderboards and hunter profiles, straight from the public API."
+    />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13' fill='%23ffb454'>◆</text></svg>" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#/">
+        <span class="brand-mark" aria-hidden="true">◆</span> make.fun
+        <span class="brand-sub">front door</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="#/">Board</a>
+        <form id="profile-jump" class="profile-jump">
+          <label class="sr-only" for="handle-input">Go to a profile</label>
+          <input
+            id="handle-input"
+            name="handle"
+            type="text"
+            placeholder="hunter handle…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button type="submit">Profile →</button>
+        </form>
+      </nav>
+    </header>
+
+    <main id="view" class="view" aria-live="polite"></main>
+
+    <footer class="site-footer">
+      <p>
+        Live data from the public make.fun API · Rewards in USDC on Solana ·
+        <a href="#/">Back to the board</a>
+      </p>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
